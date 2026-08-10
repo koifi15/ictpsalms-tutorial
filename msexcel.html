@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MS Excel</title>
+</head>
+<style>
+  * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+body{
+    margin: 0;
+    min-height: 100vh;
+    background-image: url(image/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 100px;
+  }
+/* Base Navbar Styles */
+.navbar {
+  background: rgba(0, 0, 0, 0.2);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.navbar__logo {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.navbar__links {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 3px 20px;
+  height: 100%;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.7s ease;
+}
+
+.navbar__links:hover,
+.navbar__links.active {
+  color: #111;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid #fff;
+}
+
+/* Hamburger Toggle Button */
+.navbar__toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.navbar__toggle .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  background: #fff;
+}
+
+/* Media Query for Tablet/Mobile Screens (<= 880px) */
+@media screen and (max-width: 880px) {
+  .navbar {
+    backdrop-filter: none;
+  }
+
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.7rem;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5rem 1.5rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .navbar__menu.active {
+    display: flex;
+  }
+
+  .navbar__toggle {
+    display: block;
+    z-index: 1000;
+  }
+
+  /* Hamburger Animation to 'X' */
+  .navbar__toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .navbar__toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* Media Query for Small Mobile Screens (<= 480px) */
+@media screen and (max-width: 480px) {
+  .navbar__container {
+    padding: 0 1rem;
+  }
+
+  .navbar__logo {
+    font-size: 1.7rem;
+  }
+
+  .navbar__links {
+    font-size: 1.2rem;
+    padding: 3px 15px;
+  }
+}
+
+   .team{
+      color: white;
+      font-family: monospace;
+      font-size: 50px;
+      text-align: center;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
+    .box{
+      
+      width: 405px;
+      height: 220px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter:blur(50px);
+      box-shadow: 0 0 10px white;
+      }
+    .ourteam{
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+    } 
+    .box-img{
+      background-color: black;
+      height: 175px;
+      
+     
+    }
+    h4{
+      background-color: black;
+      padding: 10px;
+      color: white;
+    }
+
+    .box-img video{
+      height: 175px;
+      width: 400px;
+      
+  
+    }
+</style>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" class="navbar__logo">PSALMS TUTORIAL</a>
+      
+      <!-- Mobile Toggle Button -->
+      <button class="navbar__toggle" id="mobile-menu" aria-label="Toggle Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Navigation Menu -->
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="home.html" class="navbar__links">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="msword.html" class="navbar__links">MS Word</a>
+        </li>
+        <li class="navbar__item">
+          <a href="msexcel.html" class="navbar__links">MS Excel</a>
+        </li>
+        <li class="navbar__item">
+          <a href="mspowerpoint.html" class="navbar__links">MS Powerpoint</a>
+        </li>
+        <li class="navbar__item">
+          <a href="about.html" class="navbar__links">About</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  <h1 class="team">MICROSOFT EXCEL</h1>
+  <div class="ourteam">
+
+  <div class="box">
+    <div class="box-img">  <a href="videos/EV1.mp4"></a> <video src="videos/EV1.mp4" controls> </div>
+    <h4>part 1: basics</h4>
+  </div>
+  
+   <div class="box">
+    <div class="box-img">  <a href="videos/EV2.mp4"></a> <video src="videos/EV2.mp4" controls> </div>
+    <h4> part 2 : formatting data</h4>
+  </div>
+   <div class="box">
+    <div class="box-img">  <a href="videos/EV3.mp4"></a> <video src="videos/EV3.mp4" controls> </div>
+    <h4>part 3 : sort and filter</h4>
+  </div>
+   <div class="box">
+    <div class="box-img">  <a href="videos/EV4.mp4"></a> <video src="videos/EV4.mp4" controls> </div>
+    <h4>part 4 : charts</h4>
+  </div>
+   <div class="box">
+    <div class="box-img">  <a href="videos/EV5.mp4"></a> <video src="videos/EV5.mp4" controls> </div>
+    <h4>part 5 : conditional formatting</h4>
+  </div>
+
+  </div>
+
+
+  <script>
+    const menuToggle = document.querySelector('.navbar__toggle');
+const navMenu = document.querySelector('.navbar__menu');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+  </script>
+</body>
+</html>

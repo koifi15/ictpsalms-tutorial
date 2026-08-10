@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Main</title>
+</head>
+<style>
+	* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+body{
+    margin: 0;
+    min-height: 100vh;
+    background-image: url(image/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    height: 100%;
+    margin-bottom: 200px;
+  }
+/* Base Navbar Styles */
+.navbar {
+  margin-bottom: 200px;
+  background: rgba(0, 0, 0, 0.2);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.navbar__logo {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.navbar__links {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 3px 20px;
+  height: 100%;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.7s ease;
+}
+
+.navbar__links:hover,
+.navbar__links.active {
+  color: #111;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid #fff;
+}
+
+/* Hamburger Toggle Button */
+.navbar__toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.navbar__toggle .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  background: #fff;
+}
+
+/* Media Query for Tablet/Mobile Screens (<= 880px) */
+@media screen and (max-width: 880px) {
+  .navbar {
+    backdrop-filter: none;
+  }
+
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.7rem;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5rem 1.5rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .navbar__menu.active {
+    display: flex;
+  }
+
+  .navbar__toggle {
+    display: block;
+    z-index: 1000;
+  }
+
+  /* Hamburger Animation to 'X' */
+  .navbar__toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .navbar__toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* Media Query for Small Mobile Screens (<= 480px) */
+@media screen and (max-width: 480px) {
+  .navbar__container {
+    padding: 0 1rem;
+  }
+
+  .navbar__logo {
+    font-size: 1.7rem;
+  }
+
+  .navbar__links {
+    font-size: 1.2rem;
+    padding: 3px 15px;
+  }
+}
+
+.box{
+      margin-top: 10px;
+      width: 200px;
+      height: 300px;
+      background: rgba(80, 47, 138, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter:blur(50px);
+      transition: all 0.6s ease;
+
+      }
+    .ourteam{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+    } 
+    .box-img{
+      display: flex;
+      background-color: white;
+      height: 175px;
+      margin: 5px;
+      align-items: center;
+      justify-content: center;
+    }
+    h3 a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 10px;
+      color: skyblue;
+    }
+
+
+    .box-img img{
+       display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 175px;
+      width: 190px;
+      max-width: 180px;
+      max-height: 160px;
+      box-shadow: 0 0 10px white;
+    }
+  
+    .hidden-text {
+        padding: 10px;
+      font-size: 20px;
+      color: white;
+       max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 1.3s ease, margin-top 0.3s ease;
+
+}
+
+ .box.open .hidden-text {
+      max-height: 300px; /* Adjust if your content is longer */
+      opacity: 1;
+      margin-top: 12px;
+   
+    }
+    .box.open {
+    width: 300px;
+      height: 500px;
+    }
+@keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delayed-text {
+      /* Prevents text from flashing on screen before animation starts */
+      opacity: 0; 
+
+      /* Key properties */
+      animation-name: fadeIn;
+      animation-duration: 0.8s;
+      animation-delay: 1s; /* <--- 1 SECOND DELAY HERE */
+      animation-fill-mode: forwards; /* Holds the final 'opacity: 1' state */
+    }
+</style>
+<body>
+  <div class="delayed-text">
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" class="navbar__logo">PSALMS TUTORIAL</a>
+      
+      <!-- Mobile Toggle Button -->
+      <button class="navbar__toggle" id="mobile-menu" aria-label="Toggle Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Navigation Menu -->
+      <ul class="navbar__menu">
+      	<li class="navbar__item">
+          <a href="home.html" class="navbar__links">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="msword.html" class="navbar__links">MS Word</a>
+        </li>
+        <li class="navbar__item">
+          <a href="msexcel.html" class="navbar__links">MS Excel</a>
+        </li>
+        <li class="navbar__item">
+          <a href="mspowerpoint.html" class="navbar__links">MS Powerpoint</a>
+        </li>
+        <li class="navbar__item">
+          <a href="about.html" class="navbar__links">About</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  <div class="ourteam">
+
+  <div class="box" onclick="toggleBox(this)">
+    <div class="box-img"> <img src="image/wordlogo2.webp"> </div>
+    <h3> <a href="msword.html"> MICROSOFT WORD </a></h3>
+  <h2 class="hidden-text">Microsoft Word, often called Word or MS Word, is a word processing program developed by Microsoft and is part of the Microsoft Office suite or Microsoft 365 subscription services</h2>
+  </div>
+
+   <div class="box" onclick="toggleBox(this)">
+    <div class="box-img"> <img src="image/excellogo.webp"> </div>
+    <h3> <a href="msexcel.html"> MICROSOFT EXCEL </a></h3>
+    <h2 class="hidden-text">Microsoft Excel is a versatile spreadsheet application developed by Microsoft that allows users to structure data in rows and columns, perform calculations, and create visual representations like charts and graphs</h2>
+  </div>
+
+   <div class="box" onclick="toggleBox(this)">
+    <div class="box-img"> <img src="image/ppt3.webp"> </div>
+    <h3> <a href="mspowerpoint.html"> MICROSOFT POWERPOINT </a></h3>
+     <h2 class="hidden-text"> Microsoft PowerPoint is a presentation software developed by Microsoft that is widely used to create slideshows that combine text, images, and multimedia. It helps users deliver content in a structured and engaging way</h2>
+  </div>
+</div>
+ 
+
+
+
+</div>
+  <script>
+  	const menuToggle = document.querySelector('.navbar__toggle');
+const navMenu = document.querySelector('.navbar__menu');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+function toggleBox(element) {
+      // Toggles the 'open' class on the card
+      element.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>
